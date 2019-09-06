@@ -5,10 +5,24 @@ Class {
 		'id',
 		'name',
 		'username',
-		'password'
+		'password',
+		'token',
+		'appAccess'
 	],
 	#category : #EMPlatform
 }
+
+{ #category : #accessing }
+EMPUser >> initialize [
+	super initialize.
+	id := id + 1
+]
+
+{ #category : #accessing }
+EMPUser >> login: aUsername with: aPassword [
+	"Check user id against provided username and password, if they match then set the appAccess flaf to true for that user"
+
+]
 
 { #category : #accessing }
 EMPUser >> name: aString [
@@ -22,6 +36,8 @@ EMPUser >> password: aString [
 
 { #category : #accessing }
 EMPUser >> register: aName username: aUsername password: aPassword [
+	"Add new user to the app with its name, username, password, and id"
+
 	| newUser |
 	newUser := EMPUser new.
 	newUser
