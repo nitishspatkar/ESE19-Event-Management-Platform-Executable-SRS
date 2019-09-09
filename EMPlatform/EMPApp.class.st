@@ -2,7 +2,8 @@ Class {
 	#name : #EMPApp,
 	#superclass : #Object,
 	#instVars : [
-		'users'
+		'users',
+		'services'
 	],
 	#category : #EMPlatform
 }
@@ -10,5 +11,16 @@ Class {
 { #category : #accessing }
 EMPApp >> initialize [
 	super initialize.
-	users := OrderedCollection new
+	users := OrderedCollection new.
+	services := OrderedCollection new
+]
+
+{ #category : #accessing }
+EMPApp >> services [
+	^ services
+]
+
+{ #category : #accessing }
+EMPApp >> users [
+	^ users
 ]
