@@ -2,7 +2,8 @@ Class {
 	#name : #ServicePosting,
 	#superclass : #Object,
 	#instVars : [
-		'description'
+		'description',
+		'publishedFlag'
 	],
 	#category : #EMPlatform
 }
@@ -19,5 +20,16 @@ ServicePosting >> description: someText [
 
 { #category : #accessing }
 ServicePosting >> initialize [
-	description := ''
+	description := ''.
+	publishedFlag := false
+]
+
+{ #category : #accessing }
+ServicePosting >> publishedFlag [
+	^ publishedFlag
+]
+
+{ #category : #accessing }
+ServicePosting >> publishedFlag: aBoolean [
+	publishedFlag := aBoolean
 ]

@@ -13,9 +13,13 @@ EMPAdmin >> acceptOrRejectService [
 	| servicesToPublish |
 	servicesToPublish := MyAdmin serviceRequests
 		select: [ :each | each description isNotEmpty ].
-	MyApp services addAll: {servicesToPublish}.
 	servicesToPublish
-		do: [ :each | MyAdmin serviceRequests remove: each ]
+		do: [ :each | 
+			each publishedFlag: true.
+			MyAdmin serviceRequests remove: each.
+			MyApp services add: each ]
+	"MyApp services
+		addAll: {servicesToPublish}"
 ]
 
 { #category : #accessing }
