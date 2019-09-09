@@ -2,7 +2,6 @@ Class {
 	#name : #ServicePosting,
 	#superclass : #Object,
 	#instVars : [
-		'id',
 		'description'
 	],
 	#category : #EMPlatform
@@ -16,4 +15,9 @@ ServicePosting >> description [
 { #category : #accessing }
 ServicePosting >> description: someText [
 	description := someText
+]
+
+{ #category : #accessing }
+ServicePosting >> initialize [
+	description := nil
 ]
