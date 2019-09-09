@@ -7,3 +7,13 @@ Class {
 	],
 	#category : #EMPlatform
 }
+
+{ #category : #accessing }
+ServicePosting >> description [
+	^ description
+]
+
+{ #category : #accessing }
+ServicePosting >> description: someText [
+	description := someText
+]

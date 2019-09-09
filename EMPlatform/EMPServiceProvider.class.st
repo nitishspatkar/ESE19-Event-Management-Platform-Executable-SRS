@@ -9,9 +9,20 @@ Class {
 
 { #category : #accessing }
 EMPServiceProvider >> addCateringService [
-	| aCateringService |
-	aCateringService := CateringPosting new.
-	service := aCateringService
+	| newService |
+	newService := CateringPosting new.
+	newService description: 'sample service description'.
+	MyAdmin serviceRequests addAll: {newService}
+]
+
+{ #category : #accessing }
+EMPServiceProvider >> addCateringServiceExample [
+	<gtExample>
+	| newService |
+	newService := CateringPosting new.
+	newService description: 'sample service description'.
+	MyApp services addAll: {newService}.
+	MyAdmin serviceRequests addAll: {newService}
 ]
 
 { #category : #accessing }
