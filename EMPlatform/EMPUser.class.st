@@ -23,19 +23,6 @@ EMPUser >> initialize [
 ]
 
 { #category : #accessing }
-EMPUser >> login: aUsername with: aPassword [
-	"Check provided username and password, if they match then set the appAccess flag to true for that user"
-
-	MyApp users
-		do: [ :each | 
-			each username = aUsername
-				ifTrue: [ each password = aPassword
-						ifTrue: [ each appAccess: true.
-							self inform: 'Credentials match' ]
-						ifFalse: [ self inform: 'Wrong credentials!' ] ] ]
-]
-
-{ #category : #accessing }
 EMPUser >> loginExample [
 	<gtExample>
 	| uName pwd |
@@ -63,20 +50,6 @@ EMPUser >> password [
 { #category : #accessing }
 EMPUser >> password: aString [
 	password := aString
-]
-
-{ #category : #accessing }
-EMPUser >> register: aName username: aUsername password: aPassword [
-	"Add new user to the app with its name, username, password"
-
-	| newUser |
-	newUser := EMPUser new.
-	newUser
-		name: aName;
-		username: aUsername;
-		password: aPassword.
-	MyApp users addAll: {newUser}.
-	^ newUser
 ]
 
 { #category : #accessing }
