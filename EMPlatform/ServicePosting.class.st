@@ -19,5 +19,5 @@ ServicePosting >> description: someText [
 
 { #category : #accessing }
 ServicePosting >> initialize [
-	description := nil
+	description := ''
 ]
