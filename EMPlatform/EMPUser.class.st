@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : #accessing }
+EMPUser >> appAccess [
+	^ appAccess
+]
+
+{ #category : #accessing }
 EMPUser >> appAccess: aBoolean [
 	appAccess := aBoolean
 ]
