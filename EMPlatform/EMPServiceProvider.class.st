@@ -2,10 +2,20 @@ Class {
 	#name : #EMPServiceProvider,
 	#superclass : #EMPUser,
 	#instVars : [
-		'service'
+		'postedService'
 	],
 	#category : #EMPlatform
 }
+
+{ #category : #accessing }
+EMPServiceProvider >> addCateringServiceExample [
+	<gtExample>
+	| aLoggedInServiceProvider aCateringService |
+	aLoggedInServiceProvider := MyApp users
+		select:
+			[ :each | (each isKindOf: EMPServiceProvider) and: each appAccess = true ].
+	^ aLoggedInServiceProvider
+]
 
 { #category : #accessing }
 EMPServiceProvider >> addServiceExample [
@@ -36,11 +46,26 @@ EMPServiceProvider >> addServiceWhenLoggedInExample [
 	MyApp users
 		do: [ :each | 
 			each appAccess = true
-				ifTrue: [ MyAdmin serviceRequests
-						addAll:
-							{newService1.
-							newService2} ]
+				ifTrue: [ "Check if the logged in user is a service provider"
+					each
+						isKindOf: EMPServiceProvider
+						ifTrue: [ MyAdmin serviceRequests
+								addAll:
+									{newService1.
+									newService2} ]
+						ifFalse: [ self inform: 'Logged in user not service provider' ] ]
 				ifFalse: [ self inform: 'Please login' ] ].
 	^ {newService1.
 	newService2}
+]
+
+{ #category : #accessing }
+EMPServiceProvider >> initialize [
+	super initialize.
+	postedService := OrderedCollection new
+]
+
+{ #category : #accessing }
+EMPServiceProvider >> postedService [
+	^ postedService
 ]

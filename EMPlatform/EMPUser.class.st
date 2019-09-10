@@ -6,7 +6,6 @@ Class {
 		'name',
 		'username',
 		'password',
-		'token',
 		'appAccess'
 	],
 	#category : #EMPlatform
@@ -24,7 +23,7 @@ EMPUser >> appAccess: aBoolean [
 
 { #category : #accessing }
 EMPUser >> initialize [
-	appAccess := false
+	appAccess := false.
 ]
 
 { #category : #accessing }
@@ -60,21 +59,27 @@ EMPUser >> password: aString [
 { #category : #accessing }
 EMPUser >> registerExample [
 	<gtExample>
-	| newUser1 newUser2 |
-	newUser1 := EMPUser new.
-	newUser2 := EMPUser new.
+	| newUser1 newUser2 newUser3 |
+	newUser1 := EMPServiceProvider new.
+	newUser2 := EMPServiceProvider new.
+	newUser3 := EMPEndUser new.
 	newUser1
-		name: 'Nitish';
+		name: 'user1';
 		username: 'testUsername1';
 		password: 'testPassword1'.
 	newUser2
-		name: 'Rahul';
+		name: 'user2';
+		username: 'testUsername2';
+		password: 'testPassword2'.
+	newUser3
+		name: 'user3';
 		username: 'testUsername2';
 		password: 'testPassword2'.
 	MyApp users
 		addAll:
 			{newUser1.
-			newUser2}.
+			newUser2.
+			newUser3}.
 	^ {newUser1.
 	newUser2}
 ]
