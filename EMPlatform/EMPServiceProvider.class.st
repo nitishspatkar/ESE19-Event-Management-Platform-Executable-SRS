@@ -10,11 +10,19 @@ Class {
 { #category : #accessing }
 EMPServiceProvider >> addCateringServiceExample [
 	<gtExample>
-	| aLoggedInServiceProvider aCateringService |
-	aLoggedInServiceProvider := MyApp users
-		select:
-			[ :each | (each isKindOf: EMPServiceProvider) and: each appAccess = true ].
-	^ aLoggedInServiceProvider
+	| aCateringService |
+	aCateringService := CateringPosting new.
+	aCateringService description: 'Catering service sample description'.
+	"Check if the user is a service provider and logged in - we have only one"
+	MyApp users
+		do: [ :each | 
+			(each isKindOf: EMPServiceProvider)
+				ifTrue: [ each appAccess = true
+						ifTrue: [ each username = 'testUsername1'
+								ifTrue: [ each postedService add: aCateringService ] ] ]
+				ifFalse: [ self inform: 'Not logged in' ] ].
+	"Also send this posting to admin for approval"
+	MyAdmin serviceRequests add: aCateringService
 ]
 
 { #category : #accessing }
@@ -36,27 +44,20 @@ EMPServiceProvider >> addServiceExample [
 ]
 
 { #category : #accessing }
-EMPServiceProvider >> addServiceWhenLoggedInExample [
+EMPServiceProvider >> addVenueServiceExample [
 	<gtExample>
-	| newService1 newService2 |
-	newService1 := CateringPosting new.
-	newService2 := VenuePosting new.
-	newService1 description: 'sample catering service description'.
-	"Check if the service provider is logged in (we will pick the one who has logged in already for the sake of this example), otherwise he cannot post a request"
+	| aVenueService |
+	aVenueService := VenuePosting new.
+	"Check if the user is a service provider and logged in - we have only one"
 	MyApp users
 		do: [ :each | 
-			each appAccess = true
-				ifTrue: [ "Check if the logged in user is a service provider"
-					each
-						isKindOf: EMPServiceProvider
-						ifTrue: [ MyAdmin serviceRequests
-								addAll:
-									{newService1.
-									newService2} ]
-						ifFalse: [ self inform: 'Logged in user not service provider' ] ]
-				ifFalse: [ self inform: 'Please login' ] ].
-	^ {newService1.
-	newService2}
+			(each isKindOf: EMPServiceProvider)
+				ifTrue: [ each appAccess = true
+						ifTrue: [ each username = 'testUsername4'
+								ifTrue: [ each postedService add: aVenueService ] ] ]
+				ifFalse: [ self inform: 'Not logged in' ] ].
+	"Also send this posting to admin for approval"
+	MyAdmin serviceRequests add: aVenueService
 ]
 
 { #category : #accessing }

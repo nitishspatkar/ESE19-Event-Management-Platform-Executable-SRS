@@ -18,8 +18,6 @@ EMPAdmin >> acceptOrRejectService [
 			each publishedFlag: true.
 			MyAdmin serviceRequests remove: each.
 			MyApp services add: each ]
-	"MyApp services
-		addAll: {servicesToPublish}"
 ]
 
 { #category : #accessing }
