@@ -6,24 +6,29 @@ Class {
 		'name',
 		'username',
 		'password',
-		'appAccess'
+		'isLogged'
 	],
 	#category : #EMPlatform
 }
 
-{ #category : #accessing }
-EMPUser >> appAccess [
-	^ appAccess
-]
-
-{ #category : #accessing }
-EMPUser >> appAccess: aBoolean [
-	appAccess := aBoolean
+{ #category : #'as yet unclassified' }
+EMPUser class >> with:username and: password [
+^ self new username: username;password:password
 ]
 
 { #category : #accessing }
 EMPUser >> initialize [
-	appAccess := false.
+	isLogged := false.
+]
+
+{ #category : #accessing }
+EMPUser >> isLogged [
+	^ isLogged 
+]
+
+{ #category : #accessing }
+EMPUser >> isLogged: aBoolean [
+	isLogged := aBoolean
 ]
 
 { #category : #accessing }
@@ -36,7 +41,7 @@ EMPUser >> loginUser1Example [
 		do: [ :each | 
 			each username = 'testUsername1'
 				ifTrue: [ each password = 'testPassword1'
-						ifTrue: [ each appAccess: true.
+						ifTrue: [ each isLogged: true.
 							self inform: 'Credentials match' ]
 						ifFalse: [ self inform: 'Wrong credentials!' ] ] ]
 ]
@@ -51,7 +56,7 @@ EMPUser >> loginUser4Example [
 		do: [ :each | 
 			each username = 'testUsername4'
 				ifTrue: [ each password = 'testPassword4'
-						ifTrue: [ each appAccess: true.
+						ifTrue: [ each isLogged: true.
 							self inform: 'Credentials match' ]
 						ifFalse: [ self inform: 'Wrong credentials!' ] ] ]
 ]

@@ -17,7 +17,7 @@ EMPServiceProvider >> addCateringServiceExample [
 	MyApp users
 		do: [ :each | 
 			(each isKindOf: EMPServiceProvider)
-				ifTrue: [ each appAccess = true
+				ifTrue: [ each isLogged = true
 						ifTrue: [ each username = 'testUsername1'
 								ifTrue: [ each postedService add: aCateringService ] ] ]
 				ifFalse: [ self inform: 'Not logged in' ] ].
@@ -52,7 +52,7 @@ EMPServiceProvider >> addVenueServiceExample [
 	MyApp users
 		do: [ :each | 
 			(each isKindOf: EMPServiceProvider)
-				ifTrue: [ each appAccess = true
+				ifTrue: [ each isLogged = true
 						ifTrue: [ each username = 'testUsername4'
 								ifTrue: [ each postedService add: aVenueService ] ] ]
 				ifFalse: [ self inform: 'Not logged in' ] ].
