@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #accessing }
-EMPEndUser >> seeAllServices [
+EMPEndUser >> allServices [
 	<gtExample>
 	^ MyApp services
 ]

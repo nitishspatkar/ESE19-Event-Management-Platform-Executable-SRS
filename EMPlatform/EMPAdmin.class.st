@@ -7,6 +7,11 @@ Class {
 	#category : #EMPlatform
 }
 
+{ #category : #'as yet unclassified' }
+EMPAdmin >> accept: aService [
+	self serviceRequests add: aService
+]
+
 { #category : #accessing }
 EMPAdmin >> acceptOrRejectService [
 	<gtExample>
@@ -23,7 +28,7 @@ EMPAdmin >> acceptOrRejectService [
 { #category : #accessing }
 EMPAdmin >> initialize [
 	super initialize.
-	appAccess := true.
+	isLogged := true.
 	serviceRequests := OrderedCollection new
 ]
 

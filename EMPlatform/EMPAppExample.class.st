@@ -1,35 +1,58 @@
 Class {
 	#name : #EMPAppExample,
 	#superclass : #Object,
+	#instVars : [
+		'app'
+	],
 	#category : #'EMPlatform-Examples'
 }
 
 { #category : #'as yet unclassified' }
 EMPAppExample >> app [
 	<gtExample>
-		^ EMPApp new.
+
+	app isNil
+		ifTrue: [ app := EMPApp new ]
+		ifFalse: [ app ].
+	^ app
+]
+
+{ #category : #'as yet unclassified' }
+EMPAppExample >> endUser [
+	<gtExample>
+		^ EMPUserExample new endUser.
 ]
 
 { #category : #'as yet unclassified' }
 EMPAppExample >> login [
 	<gtExample>
-		^ self app login: (self user username) with: (self user password).
+	self registerEndUser.
+	self registerServiceProvider.
+	^ self app login: self endUser username with: self endUser password
 ]
 
 { #category : #'as yet unclassified' }
-EMPAppExample >> register [
+EMPAppExample >> registerEndUser [
 	<gtExample>
-		^ self app register: self user.
+	^ self app register: self endUser
 ]
 
 { #category : #'as yet unclassified' }
-EMPAppExample >> user [
+EMPAppExample >> registerServiceProvider [
 	<gtExample>
-		^ EMPUserExample new user.
+	^ 	self app register: self serviceProvider.
+]
+
+{ #category : #'as yet unclassified' }
+EMPAppExample >> serviceProvider [
+	<gtExample>
+		^ EMPUserExample new serviceProvider.
 ]
 
 { #category : #'as yet unclassified' }
 EMPAppExample >> users [
 	<gtExample>
-		^ self app users.
+	self registerEndUser.
+	self registerServiceProvider.
+	^ self app users
 ]

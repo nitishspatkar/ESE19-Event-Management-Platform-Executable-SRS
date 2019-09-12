@@ -5,13 +5,25 @@ Class {
 }
 
 { #category : #accessing }
-EMPUserExample >> name [
+EMPUserExample >> admin [
 	<gtExample>
-		 ^ self user name: 'Nitish'.
+	^ EMPAdmin with: 'nit' and: 'ish'
 ]
 
 { #category : #accessing }
-EMPUserExample >> user [
+EMPUserExample >> endUser [
 	<gtExample>
 		 ^ EMPEndUser with:'usrname' and: 'pasword'.
+]
+
+{ #category : #accessing }
+EMPUserExample >> name [
+	<gtExample>
+		 ^ self endUser name: 'Nitish'.
+]
+
+{ #category : #accessing }
+EMPUserExample >> serviceProvider [
+	<gtExample>
+		 ^ EMPServiceProvider with:'nit' and: 'ish'.
 ]

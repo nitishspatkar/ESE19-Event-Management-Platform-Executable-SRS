@@ -2,10 +2,20 @@ Class {
 	#name : #EMPServiceProvider,
 	#superclass : #EMPUser,
 	#instVars : [
-		'postedService'
+		'services'
 	],
 	#category : #EMPlatform
 }
+
+{ #category : #accessing }
+EMPServiceProvider >> add: aService to: anApp [
+	anApp users
+		do: [ :each | 
+			(each isKindOf: EMPServiceProvider)
+				ifTrue: [ each isLogged = true
+						ifTrue: [ each services add: aService ] ]
+				ifFalse: [ self inform: 'Not logged in' ] ].
+]
 
 { #category : #accessing }
 EMPServiceProvider >> addCateringServiceExample [
@@ -14,15 +24,7 @@ EMPServiceProvider >> addCateringServiceExample [
 	aCateringService := CateringPosting new.
 	aCateringService description: 'Catering service sample description'.
 	"Check if the user is a service provider and logged in - we have only one"
-	MyApp users
-		do: [ :each | 
-			(each isKindOf: EMPServiceProvider)
-				ifTrue: [ each isLogged = true
-						ifTrue: [ each username = 'testUsername1'
-								ifTrue: [ each postedService add: aCateringService ] ] ]
-				ifFalse: [ self inform: 'Not logged in' ] ].
-	"Also send this posting to admin for approval"
-	MyAdmin serviceRequests add: aCateringService
+	self add: aCateringService.
 ]
 
 { #category : #accessing }
@@ -33,7 +35,7 @@ EMPServiceProvider >> addServiceExample [
 	newService2 := VenuePosting new.
 	newService1 description: 'sample catering service description'.
 	"Check if the service provider is logged in, otherwise he cannot post a request"
-	appAccess = true
+	isLogged = true
 		ifTrue: [ MyAdmin serviceRequests
 				addAll:
 					{newService1.
@@ -54,19 +56,26 @@ EMPServiceProvider >> addVenueServiceExample [
 			(each isKindOf: EMPServiceProvider)
 				ifTrue: [ each isLogged = true
 						ifTrue: [ each username = 'testUsername4'
-								ifTrue: [ each postedService add: aVenueService ] ] ]
+								ifTrue: [ each services add: aVenueService ] ] ]
 				ifFalse: [ self inform: 'Not logged in' ] ].
 	"Also send this posting to admin for approval"
 	MyAdmin serviceRequests add: aVenueService
 ]
 
 { #category : #accessing }
-EMPServiceProvider >> initialize [
-	super initialize.
-	postedService := OrderedCollection new
+EMPServiceProvider >> forward: aService to: admin [
+	"Also send this posting to admin for approval"
+
+	admin accept: aService
 ]
 
 { #category : #accessing }
-EMPServiceProvider >> postedService [
-	^ postedService
+EMPServiceProvider >> initialize [
+	super initialize.
+	services := OrderedCollection new
+]
+
+{ #category : #accessing }
+EMPServiceProvider >> services [
+	^ services
 ]

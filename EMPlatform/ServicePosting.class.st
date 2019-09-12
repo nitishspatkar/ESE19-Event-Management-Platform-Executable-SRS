@@ -8,6 +8,11 @@ Class {
 	#category : #EMPlatform
 }
 
+{ #category : #'instance creation' }
+ServicePosting class >> with: aDescription [
+	^ self new description: aDescription.
+]
+
 { #category : #accessing }
 ServicePosting >> description [
 	^ description
@@ -20,7 +25,6 @@ ServicePosting >> description: someText [
 
 { #category : #accessing }
 ServicePosting >> initialize [
-	description := ''.
 	publishedFlag := false
 ]
 
