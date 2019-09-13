@@ -5,7 +5,7 @@ Class {
 		'description',
 		'publishedFlag'
 	],
-	#category : #EMPlatform
+	#category : #'EMPlatform-Model'
 }
 
 { #category : #'instance creation' }
@@ -21,6 +21,11 @@ ServicePosting >> description [
 { #category : #accessing }
 ServicePosting >> description: someText [
 	description := someText
+]
+
+{ #category : #testing }
+ServicePosting >> hasDescription [
+	^ self description isNotNil
 ]
 
 { #category : #accessing }

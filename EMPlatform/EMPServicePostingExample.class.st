@@ -5,13 +5,13 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-EMPServicePostingExample >> VenuePosting [
-	<gtExample>
-	^ VenuePosting with: 'a venue service'
-]
-
-{ #category : #'as yet unclassified' }
 EMPServicePostingExample >> cateringService [
 	<gtExample>
 	^ CateringPosting with: 'a caterging service'.
+]
+
+{ #category : #'as yet unclassified' }
+EMPServicePostingExample >> venueService [
+	<gtExample>
+	^ VenuePosting with: 'a venue service'
 ]

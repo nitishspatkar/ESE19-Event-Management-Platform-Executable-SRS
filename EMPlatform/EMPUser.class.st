@@ -8,7 +8,7 @@ Class {
 		'password',
 		'isLogged'
 	],
-	#category : #EMPlatform
+	#category : #'EMPlatform-Model'
 }
 
 { #category : #'as yet unclassified' }

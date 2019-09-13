@@ -2,37 +2,49 @@ Class {
 	#name : #EMPAdmin,
 	#superclass : #EMPUser,
 	#instVars : [
-		'serviceRequests'
+		'app'
 	],
-	#category : #EMPlatform
+	#category : #'EMPlatform-Model'
 }
 
 { #category : #'as yet unclassified' }
-EMPAdmin >> accept: aService [
-	self serviceRequests add: aService
+EMPAdmin class >> with:username and: password of: anApp [
+|user|
+	user := self new username: username;password:password.
+	user app: anApp.
+	^ user
 ]
 
-{ #category : #accessing }
-EMPAdmin >> acceptOrRejectService [
-	<gtExample>
-	| servicesToPublish |
-	servicesToPublish := MyAdmin serviceRequests
-		select: [ :each | each description isNotEmpty ].
-	servicesToPublish
-		do: [ :each | 
-			each publishedFlag: true.
-			MyAdmin serviceRequests remove: each.
-			MyApp services add: each ]
+{ #category : #'as yet unclassified' }
+EMPAdmin >> accept: aService [
+	aService publishedFlag: true.
+	self app services add: aService.
+	
+]
+
+{ #category : #'as yet unclassified' }
+EMPAdmin >> app [ 
+	^ app
+]
+
+{ #category : #'as yet unclassified' }
+EMPAdmin >> app: anApp [
+	 app := anApp.
 ]
 
 { #category : #accessing }
 EMPAdmin >> initialize [
 	super initialize.
 	isLogged := true.
-	serviceRequests := OrderedCollection new
 ]
 
-{ #category : #accessing }
-EMPAdmin >> serviceRequests [
-	^ serviceRequests
+{ #category : #'as yet unclassified' }
+EMPAdmin >> reject: aService [
+	aService inform: [ 'Service is not accepted' ]
+]
+
+{ #category : #'as yet unclassified' }
+EMPAdmin >> validateService: aService [	
+		aService hasDescription  ifTrue: [ self accept: aService ]
+		
 ]

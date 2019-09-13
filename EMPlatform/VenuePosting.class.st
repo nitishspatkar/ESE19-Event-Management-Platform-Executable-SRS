@@ -1,5 +1,5 @@
 Class {
 	#name : #VenuePosting,
 	#superclass : #ServicePosting,
-	#category : #EMPlatform
+	#category : #'EMPlatform-Model'
 }

@@ -5,7 +5,7 @@ Class {
 		'users',
 		'services'
 	],
-	#category : #EMPlatform
+	#category : #'EMPlatform-Model'
 }
 
 { #category : #adding }
@@ -20,7 +20,7 @@ EMPApp >> initialize [
 	services := OrderedCollection new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - process' }
 EMPApp >> login: username with: password [
 	self users at: username
 		ifPresent: [ :user | 

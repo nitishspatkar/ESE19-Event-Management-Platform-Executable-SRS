@@ -24,11 +24,19 @@ EMPAppExample >> endUser [
 ]
 
 { #category : #'as yet unclassified' }
-EMPAppExample >> login [
+EMPAppExample >> loginEndUser [
 	<gtExample>
 	self registerEndUser.
+	^ (self app login: self endUser username with: self endUser password) users at: (self endUser username)
+
+]
+
+{ #category : #'as yet unclassified' }
+EMPAppExample >> loginServiceProvider [
+	<gtExample>
 	self registerServiceProvider.
-	^ self app login: self endUser username with: self endUser password
+	^ (self app login: self serviceProvider username with: self serviceProvider password) users at: (self serviceProvider username)
+	 
 ]
 
 { #category : #'as yet unclassified' }

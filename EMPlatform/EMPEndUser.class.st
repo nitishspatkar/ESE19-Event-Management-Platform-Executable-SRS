@@ -1,7 +1,7 @@
 Class {
 	#name : #EMPEndUser,
 	#superclass : #EMPUser,
-	#category : #EMPlatform
+	#category : #'EMPlatform-Model'
 }
 
 { #category : #accessing }
