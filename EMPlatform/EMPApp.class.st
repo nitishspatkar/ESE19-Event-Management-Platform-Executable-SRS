@@ -8,11 +8,11 @@ An app can have multiple ${class:EMPUser}$ which are provided with variours ${cl
 !! Setting up
 
 To initialize an app and register user we should first create an instance of an App:
-${example:EMPAppExample>>#app}$ 
+${example:EMPAppExample>>#app|noCode}$ 
 By default an app has no registered users nor any services.
 
-To make an ap useful we should create our first user as explained in ${class:EMPUserExample}$. Once a user is created we can add it to the app:
-${example:EMPAppExample>>#appWithServiceProvider|previewShow=#gtUsersFor:|previewHeight=50|previewExpanded}$
+To make an app useful we should create our first user as explained in ${class:EMPUserExample}$. Once a user is created we can add it to the app:
+${example:EMPAppExample>>#appWithServiceProvider|previewShow=#gtUsersFor:|previewHeight=50|previewExpanded|noCode}$
 
 !! Logging in
 
