@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 EMPUserExample >> admin [
 	<gtExample>
-	^ EMPAdmin with: 'nit' and: 'ish' of: EMPApp new.
+	^ EMPAdmin with: 'admin' and: 'admin' of: EMPAppExample new app.
 ]
 
 { #category : #accessing }

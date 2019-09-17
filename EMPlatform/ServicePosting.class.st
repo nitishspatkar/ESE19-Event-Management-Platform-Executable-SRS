@@ -2,9 +2,12 @@
 ! I am a service posting
 
 I am essentially any type of service required for an event.
-For example I can be a ${class:name=VenuePosting}$ or a ${class:name=CateringPosting}$.
+For example, I can be a ${class:name=VenuePosting}$ or a ${class:name=CateringPosting}$.
+
 Only a logged in ${class:name=EMPServiceProvider}$can create me:
-${example:name=EMPServicePostingExample>>#cateringService}$
+${example:name=EMPServiceProviderExample>>#addAndPublishCateringService}$
+
+
 "
 Class {
 	#name : #ServicePosting,
