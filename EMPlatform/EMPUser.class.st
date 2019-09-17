@@ -16,6 +16,20 @@ EMPUser class >> with:username and: password [
 ^ self new username: username;password:password
 ]
 
+{ #category : #printing }
+EMPUser >> gtDisplayText [
+	^ self username
+]
+
+{ #category : #'as yet unclassified' }
+EMPUser >> gtIsLoggedFor: aView [
+	<gtView>
+	
+	^ (self isLogged gtLiveFor: aView)
+		title: 'Logged';
+		priority: '2'
+]
+
 { #category : #accessing }
 EMPUser >> initialize [
 	isLogged := false.

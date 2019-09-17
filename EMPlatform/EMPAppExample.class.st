@@ -7,60 +7,80 @@ Class {
 	#category : #'EMPlatform-Examples'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'examples - app' }
 EMPAppExample >> app [
 	<gtExample>
 
-	app isNil
-		ifTrue: [ app := EMPApp new ]
-		ifFalse: [ app ].
-	^ app
+	^ EMPApp new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'examples - app' }
+EMPAppExample >> appWithServiceProvider [
+	<gtExample>
+
+	^ self app register: self serviceProviderUser
+]
+
+{ #category : #'examples - app' }
+EMPAppExample >> appWithServiceProviderAndEndUser [
+	<gtExample>
+
+	^ self appWithServiceProvider register: self endUser
+]
+
+{ #category : #'instance creation' }
 EMPAppExample >> endUser [
 	<gtExample>
-		^ EMPUserExample new endUser.
+	^ EMPUserExample new endUser
 ]
 
-{ #category : #'as yet unclassified' }
-EMPAppExample >> loginEndUser [
+{ #category : #'examples - login' }
+EMPAppExample >> loggedInEndUser [
 	<gtExample>
-	self registerEndUser.
-	^ (self app login: self endUser username with: self endUser password) users at: (self endUser username)
+	| anApp aUser |
 
+	anApp := self appWithServiceProviderAndEndUser.
+	aUser := anApp users at: self endUser username.
+	
+	anApp login: aUser username with: aUser password.
+	
+	^ aUser
 ]
 
-{ #category : #'as yet unclassified' }
-EMPAppExample >> loginServiceProvider [
+{ #category : #'examples - login' }
+EMPAppExample >> loggedInServiceProvider [
 	<gtExample>
-	self registerServiceProvider.
-	^ (self app login: self serviceProvider username with: self serviceProvider password) users at: (self serviceProvider username)
-	 
+	| anApp aUser |
+
+	anApp := self appWithServiceProvider.
+	aUser := anApp users anyOne.
+	
+	anApp login: aUser username with: aUser password.
+	
+	^ aUser
 ]
 
-{ #category : #'as yet unclassified' }
-EMPAppExample >> registerEndUser [
+{ #category : #'examples - login' }
+EMPAppExample >> notLoggedInServiceProvider [
 	<gtExample>
-	^ self app register: self endUser
+	| anApp aUser |
+
+	anApp := self appWithServiceProvider.
+	aUser := anApp users anyOne.
+	
+	^ aUser
 ]
 
-{ #category : #'as yet unclassified' }
-EMPAppExample >> registerServiceProvider [
+{ #category : #'instance creation' }
+EMPAppExample >> serviceProviderUser [
 	<gtExample>
-	^ 	self app register: self serviceProvider.
+	
+	^ EMPUserExample new serviceProvider
 ]
 
-{ #category : #'as yet unclassified' }
-EMPAppExample >> serviceProvider [
-	<gtExample>
-		^ EMPUserExample new serviceProvider.
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #'examples - app' }
 EMPAppExample >> users [
 	<gtExample>
-	self registerEndUser.
-	self registerServiceProvider.
-	^ self app users
+
+	^ self appWithServiceProviderAndEndUser users
 ]

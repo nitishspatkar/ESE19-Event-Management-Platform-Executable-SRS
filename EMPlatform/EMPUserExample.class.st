@@ -25,5 +25,6 @@ EMPUserExample >> name [
 { #category : #accessing }
 EMPUserExample >> serviceProvider [
 	<gtExample>
-		 ^ EMPServiceProvider with:'nit' and: 'ish'.
+	
+	^ EMPServiceProvider with:'nit' and: 'ish'.
 ]

@@ -7,7 +7,7 @@ Class {
 { #category : #adding }
 EMPServiceProviderExample >> aLoggedServiceProvider [
 	<gtExample>
-	^ EMPAppExample new loginServiceProvider 
+	^ EMPAppExample new loggedInServiceProvider
 ]
 
 { #category : #adding }
@@ -22,7 +22,7 @@ EMPServiceProviderExample >> addAndPublishCateringService [
 	| aCateringService aServiceProvider |
 	aCateringService := EMPServicePostingExample new cateringService.
 	"Check if the user is a service provider and logged in - we have only one"
-	aServiceProvider := EMPAppExample new loginServiceProvider.
+	aServiceProvider := EMPAppExample new loggedInServiceProvider.
 		"Add service and send this posting to admin for approval"
 	
 	^ aServiceProvider add: aCateringService forwardTo: EMPUserExample new admin.
@@ -34,7 +34,7 @@ EMPServiceProviderExample >> addAndPublishVenueService [
 	| aVenueService aServiceProvider |
 	aVenueService := EMPServicePostingExample new venueService.
 	"Check if the user is a service provider and logged in - we have only one"
-	aServiceProvider := EMPAppExample new loginServiceProvider.
+	aServiceProvider := EMPAppExample new loggedInServiceProvider.
 		"Add service and send this posting to admin for approval"
 	
 	^ aServiceProvider add: aVenueService forwardTo: EMPUserExample new admin.

@@ -1,3 +1,29 @@
+"
+! I am an event management platform
+
+I am responsible for...
+
+An app can have multiple ${class:EMPUser}$ which are provided with variours ${class:ServicePosting}$.
+
+!! Setting up
+
+To initialize an app and register user we should first create an instance of an App:
+${example:EMPAppExample>>#app}$ 
+By default an app has no registered users nor any services.
+
+To make an ap useful we should create our first user as explained in ${class:EMPUserExample}$. Once a user is created we can add it to the app:
+${example:EMPAppExample>>#appWithServiceProvider|previewShow=#gtUsersFor:|previewHeight=50|previewExpanded}$
+
+!! Logging in
+
+To start using an app a user must log-in:
+${example:EMPAppExample>>#loggedInServiceProvider}$
+
+For more examples see ${class:EMPAppExample}$
+
+
+
+"
 Class {
 	#name : #EMPApp,
 	#superclass : #Object,
@@ -11,6 +37,26 @@ Class {
 { #category : #adding }
 EMPApp >> addUser: aUser [
 	self users at: aUser username put: aUser.
+]
+
+{ #category : #'as yet unclassified' }
+EMPApp >> gtServicesFor: aView [
+	<gtView>
+
+	^ aView list
+		title: 'Services';
+		priority: 2;
+		items: [ self services ]
+]
+
+{ #category : #'as yet unclassified' }
+EMPApp >> gtUsersFor: aView [
+	<gtView>
+	
+	^ aView list
+		title: 'Users';
+		priority: 1;
+		items: [ self users values ]
 ]
 
 { #category : #accessing }
