@@ -4,7 +4,7 @@
 I am essentially any type of service required for an event.
 For example, I can be a ${class:name=VenuePosting}$ or a ${class:name=CateringPosting}$.
 
-Only a logged in ${class:name=EMPServiceProvider}$can create me:
+Only a logged in ${class:name=EMPServiceProvider}$can create a service:
 ${example:name=EMPServiceProviderExample>>#addAndPublishCateringService}$
 
 

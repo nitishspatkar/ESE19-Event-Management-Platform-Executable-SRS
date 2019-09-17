@@ -54,11 +54,10 @@ EMPAppExample >> loggedInEndUser [
 EMPAppExample >> loggedInServiceProvider [
 	<gtExample>
 	| anApp aUser |
-	anApp := self appWithServiceProviderAndEndUser.
+	anApp := self appWithServiceProvider.
 	aUser := anApp users anyOne.
 	anApp login: aUser username with: aUser password.
-	^ {anApp.
-	aUser}
+	^ aUser
 ]
 
 { #category : #'examples - login' }
