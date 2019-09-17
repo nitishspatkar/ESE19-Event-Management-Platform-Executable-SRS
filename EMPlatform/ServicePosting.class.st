@@ -1,3 +1,11 @@
+"
+! I am a service posting
+
+I am essentially any type of service required for an event.
+For example I can be a ${class:name=VenuePosting}$ or a ${class:name=CateringPosting}$.
+Only a logged in ${class:name=EMPServiceProvider}$can create me:
+${example:name=EMPServicePostingExample>>#cateringService}$
+"
 Class {
 	#name : #ServicePosting,
 	#superclass : #Object,
@@ -21,6 +29,16 @@ ServicePosting >> description [
 { #category : #accessing }
 ServicePosting >> description: someText [
 	description := someText
+]
+
+{ #category : #'as yet unclassified' }
+ServicePosting >> gtServicePostingFor: aView [
+	<gtView>
+
+	^ aView list
+		title: 'Service';
+		priority: 1;
+		items: [ self ]
 ]
 
 { #category : #testing }

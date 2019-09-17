@@ -13,7 +13,7 @@ EMPUserExample >> admin [
 { #category : #accessing }
 EMPUserExample >> endUser [
 	<gtExample>
-		 ^ EMPEndUser with:'usrname' and: 'pasword'.
+		 ^ EMPEndUser with:'Nelson' and: 'nelson456'.
 ]
 
 { #category : #accessing }
@@ -26,5 +26,5 @@ EMPUserExample >> name [
 EMPUserExample >> serviceProvider [
 	<gtExample>
 	
-	^ EMPServiceProvider with:'nit' and: 'ish'.
+	^ EMPServiceProvider with:'Max' and: 'max123'.
 ]

@@ -1,3 +1,11 @@
+"
+! I am a user
+
+I can be an ${class:name=EMPAdmin}$ or a ${class:name=EMPServiceProvider}$ or an ${class:name=EMPEndUser}$.
+As an each type of user, I have different responsibilities.
+
+
+"
 Class {
 	#name : #EMPUser,
 	#superclass : #Object,

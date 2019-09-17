@@ -1,3 +1,6 @@
+"
+You can explore more examples I have to experiment with the domain logic! Just click on the 'Examples' tab to see more examples.
+"
 Class {
 	#name : #EMPAppExample,
 	#superclass : #Object,
@@ -52,12 +55,12 @@ EMPAppExample >> loggedInServiceProvider [
 	<gtExample>
 	| anApp aUser |
 
-	anApp := self appWithServiceProvider.
+	anApp := self appWithServiceProviderAndEndUser.
 	aUser := anApp users anyOne.
 	
 	anApp login: aUser username with: aUser password.
 	
-	^ aUser
+	^ anApp
 ]
 
 { #category : #'examples - login' }
