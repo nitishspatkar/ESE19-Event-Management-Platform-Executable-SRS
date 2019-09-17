@@ -10,6 +10,20 @@ It contains following classes and relationships:
 
 All the application logic is composed as a set of `<gtExample>` further to be composed in an executable document to tell a running story.
 
+## How to load
+
+You can load the whole code in Pharo 8.0 using the following snippet:
+
+```
+EpMonitor current disable.
+[ 
+  Metacello new
+    baseline: 'EMPlatform';
+    repository: 'github://nitishspatkar/ESE19-Event-Management-Platform-Executable-SRS';
+    load
+] ensure: [ EpMonitor current enable ].
+```
+
 ## To get started: 
 Make few classes global by running following in the playground-
 
