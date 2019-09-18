@@ -6,7 +6,7 @@ For example, I can be a ${class:name=VenuePosting}$ or a ${class:name=CateringPo
 
 Only a logged in ${class:name=EMPServiceProvider}$can create a service:
 ${example:name=EMPServiceProviderExample>>#addAndPublishCateringService}$
-
+As you can see, now the app contains a published service ready to be seen by ${class:name=EMPEndUser}$
 
 "
 Class {
@@ -37,11 +37,9 @@ ServicePosting >> description: someText [
 { #category : #'as yet unclassified' }
 ServicePosting >> gtServicePostingFor: aView [
 	<gtView>
-
-	^ aView list
+	^ (self publishedFlag  gtLiveFor: aView)
 		title: 'Service';
-		priority: 1;
-		items: [ self ]
+		priority: 1
 ]
 
 { #category : #testing }

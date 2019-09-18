@@ -37,6 +37,11 @@ Class {
 }
 
 { #category : #adding }
+EMPApp >> addService: aService [
+	services add: aService
+]
+
+{ #category : #adding }
 EMPApp >> addUser: aUser [
 	self users at: aUser username put: aUser.
 ]

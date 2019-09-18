@@ -16,10 +16,9 @@ EMPAdmin class >> with:username and: password of: anApp [
 ]
 
 { #category : #'as yet unclassified' }
-EMPAdmin >> accept: aService [
+EMPAdmin >> accept: aService for: anApp [
 	aService publishedFlag: true.
-	self app services add: aService.
-	
+	anApp addService: aService
 ]
 
 { #category : #'as yet unclassified' }
@@ -45,6 +44,6 @@ EMPAdmin >> reject: aService [
 
 { #category : #'as yet unclassified' }
 EMPAdmin >> validateService: aService [	
-		aService hasDescription  ifTrue: [ self accept: aService ]
+		aService hasDescription ifTrue: [ self accept: aService ]
 		
 ]

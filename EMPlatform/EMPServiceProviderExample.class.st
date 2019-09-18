@@ -19,14 +19,15 @@ EMPServiceProviderExample >> aServiceProvider [
 { #category : #adding }
 EMPServiceProviderExample >> addAndPublishCateringService [
 	<gtExample>
-	| aCateringService aServiceProvider anAdmin |
+	| anApp aCateringService aServiceProvider anAdmin |
 	anAdmin := EMPUserExample new admin.
-	aCateringService := EMPServicePostingExample new cateringService.
 	"Check if the user is a service provider and logged in - we have only one"
-	aServiceProvider := EMPAppExample new loggedInServiceProvider.
+	anApp := EMPAppExample new appWithloggedInServiceProvider.
+	aServiceProvider := anApp users anyOne.
+	aCateringService := EMPServicePostingExample new cateringService.
 	"Add service and send this posting to admin for approval"
-	aServiceProvider add: aCateringService forwardTo: anAdmin.
-	^ aServiceProvider 
+	aServiceProvider add: aCateringService forwardTo: anAdmin of: anApp.
+	^ anApp 
 ]
 
 { #category : #adding }

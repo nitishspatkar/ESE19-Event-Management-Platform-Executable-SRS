@@ -16,17 +16,14 @@ EMPServiceProvider >> add: aService [
 ]
 
 { #category : #accessing }
-EMPServiceProvider >> add: aService forwardTo: admin [
-
-			self add: aService.
-			self forward: aService to: admin.
+EMPServiceProvider >> add: aService forwardTo: anAdmin of: anApp [
+	self add: aService.
+	self forward: aService to: anAdmin of: anApp
 ]
 
 { #category : #accessing }
-EMPServiceProvider >> forward: aService to: admin [
-	"Also send this posting to admin for approval"
-
-	admin accept: aService
+EMPServiceProvider >> forward: aService to: anAdmin of: anApp [
+	anAdmin accept: aService for: anApp
 ]
 
 { #category : #accessing }

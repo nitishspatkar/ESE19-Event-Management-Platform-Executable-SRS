@@ -31,6 +31,16 @@ EMPAppExample >> appWithServiceProviderAndEndUser [
 	^ self appWithServiceProvider register: self endUser
 ]
 
+{ #category : #'examples - login' }
+EMPAppExample >> appWithloggedInServiceProvider [
+	<gtExample>
+	| anApp aUser |
+	anApp := self appWithServiceProvider.
+	aUser := anApp users anyOne.
+	anApp login: aUser username with: aUser password.
+	^ anApp
+]
+
 { #category : #'instance creation' }
 EMPAppExample >> endUser [
 	<gtExample>
