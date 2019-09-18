@@ -6,6 +6,8 @@ For example, I can be a ${class:name=VenuePosting}$ or a ${class:name=CateringPo
 
 Only a logged in ${class:name=EMPServiceProvider}$can create a service:
 ${example:name=EMPServiceProviderExample>>#addAndPublishCateringService}$
+
+
 As you can see, now the app contains a published service ready to be seen by ${class:name=EMPEndUser}$
 
 "

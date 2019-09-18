@@ -2,7 +2,7 @@
 ! I am a user
 
 I can be an ${class:name=EMPAdmin}$ or a ${class:name=EMPServiceProvider}$ or an ${class:name=EMPEndUser}$.
-As an each type of user, I have different responsibilities.
+As an each type of user, I have different responsibilities which you can explore from individual user types. just click on one of the above classes.
 
 
 "
