@@ -1,3 +1,15 @@
+"
+! I am a service provider
+
+I create ${class:name=ServicePosting}$ only i when I am logged in:
+
+${example:name=EMPServiceProviderExample>>#addService}$
+
+I can create a service when I am logged in:
+
+${example:name=EMPServiceProviderExample>>#addServiceForLoggedInServiceProvider}$
+
+"
 Class {
 	#name : #EMPServiceProvider,
 	#superclass : #EMPUser,
@@ -23,7 +35,7 @@ EMPServiceProvider >> add: aService forwardTo: anAdmin of: anApp [
 
 { #category : #accessing }
 EMPServiceProvider >> forward: aService to: anAdmin of: anApp [
-	anAdmin accept: aService for: anApp
+	anAdmin validate: aService for: anApp
 ]
 
 { #category : #accessing }

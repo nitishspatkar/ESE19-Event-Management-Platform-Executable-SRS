@@ -49,7 +49,8 @@ ServicePosting >> hasDescription [
 
 { #category : #accessing }
 ServicePosting >> initialize [
-	publishedFlag := false
+	publishedFlag := false.
+	description := nil 
 ]
 
 { #category : #accessing }

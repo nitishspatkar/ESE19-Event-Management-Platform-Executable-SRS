@@ -1,3 +1,10 @@
+"
+! I am an admin
+
+I am responsible for accepting or rejecting services created by ${class:name=EMPServiceProvider}$ to limit spams on the ${class:name=EMPApp}$:
+
+${example:name=EMPAdminExample>>#acceptedServiceByAdmin}$
+"
 Class {
 	#name : #EMPAdmin,
 	#superclass : #EMPUser,
@@ -43,7 +50,8 @@ EMPAdmin >> reject: aService [
 ]
 
 { #category : #'as yet unclassified' }
-EMPAdmin >> validateService: aService [	
-		aService hasDescription ifTrue: [ self accept: aService ]
-		
+EMPAdmin >> validate: aService for: anApp [
+	aService hasDescription
+		ifTrue: [ self accept: aService for: anApp ]
+		ifFalse: [ self inform: 'Description missing' ]
 ]

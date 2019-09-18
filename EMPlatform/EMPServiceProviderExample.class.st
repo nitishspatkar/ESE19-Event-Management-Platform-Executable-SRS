@@ -31,6 +31,38 @@ EMPServiceProviderExample >> addAndPublishCateringService [
 ]
 
 { #category : #adding }
+EMPServiceProviderExample >> addAndPublishTwoServices [
+	<gtExample>
+	| anApp aCateringService aVenueService aServiceProvider anAdmin |
+	anAdmin := EMPUserExample new admin.
+	"Check if the user is a service provider and logged in - we have only one"
+	anApp := EMPAppExample new appWithloggedInServiceProvider.
+	aServiceProvider := anApp users anyOne.
+	aCateringService := EMPServicePostingExample new cateringService.
+	aVenueService := EMPServicePostingExample new venueService.
+	"Add service and send this posting to admin for approval"
+	aServiceProvider add: aCateringService forwardTo: anAdmin of: anApp.
+	aServiceProvider add: aVenueService forwardTo: anAdmin of: anApp.
+	^ anApp 
+]
+
+{ #category : #adding }
+EMPServiceProviderExample >> addAndPublishTwoServicesOneWithoutDescription [
+	<gtExample>
+	| anApp aCateringService aVenueService aServiceProvider anAdmin |
+	anAdmin := EMPUserExample new admin.
+	"Check if the user is a service provider and logged in - we have only one"
+	anApp := EMPAppExample new appWithloggedInServiceProvider.
+	aServiceProvider := anApp users anyOne.
+	aCateringService := EMPServicePostingExample new cateringService.
+	aVenueService := EMPServicePostingExample new venueServiceWithoutDescription.
+	"Add service and send this posting to admin for approval"
+	aServiceProvider add: aCateringService forwardTo: anAdmin of: anApp.
+	aServiceProvider add: aVenueService forwardTo: anAdmin of: anApp.
+	^ anApp 
+]
+
+{ #category : #adding }
 EMPServiceProviderExample >> addAndPublishVenueService [
 	<gtExample>
 	| aVenueService aServiceProvider |
@@ -49,4 +81,24 @@ EMPServiceProviderExample >> addMultipleServices [
 	cateringService :=  EMPServicePostingExample new cateringService.
 	venueService := EMPServicePostingExample new venueService.
 	^ EMPServiceProviderExample new aLoggedServiceProvider add: cateringService; add: venueService.
+]
+
+{ #category : #adding }
+EMPServiceProviderExample >> addService [
+	<gtExample>
+	| aServiceProvider aCateringPosting |
+	aServiceProvider := self aServiceProvider.
+	aCateringPosting := EMPServicePostingExample new cateringService.
+	aServiceProvider add: aCateringPosting.
+	^ aServiceProvider
+]
+
+{ #category : #adding }
+EMPServiceProviderExample >> addServiceForLoggedInServiceProvider [
+	<gtExample>
+	| aServiceProvider aCateringPosting |
+	aServiceProvider := self aLoggedInServiceProvider.
+	aCateringPosting := EMPServicePostingExample new cateringService.
+	aServiceProvider add: aCateringPosting.
+	^ aServiceProvider
 ]

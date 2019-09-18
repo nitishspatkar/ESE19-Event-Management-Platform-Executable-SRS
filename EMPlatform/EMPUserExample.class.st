@@ -10,6 +10,15 @@ EMPUserExample >> admin [
 	^ EMPAdmin with: 'admin' and: 'admin' of: EMPAppExample new app.
 ]
 
+{ #category : #'as yet unclassified' }
+EMPUserExample >> allServices [
+	<gtExample>
+	| anApp endUser |
+	anApp := EMPServiceProviderExample new addAndPublishTwoServices.
+	endUser := self endUser.
+	^ endUser allServicesIn: anApp
+]
+
 { #category : #accessing }
 EMPUserExample >> endUser [
 	<gtExample>

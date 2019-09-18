@@ -15,3 +15,9 @@ EMPServicePostingExample >> venueService [
 	<gtExample>
 	^ VenuePosting with: 'a venue service'
 ]
+
+{ #category : #'as yet unclassified' }
+EMPServicePostingExample >> venueServiceWithoutDescription [
+	<gtExample>
+	^ VenuePosting new
+]
